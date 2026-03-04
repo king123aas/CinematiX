@@ -963,6 +963,11 @@
                                 <button class="btn btn-primary" id="watchBtn">
                                     <i class="fas fa-play"></i> Watch Now
                                 </button>
+                                ${type !== 'tv' ? `
+                                <button class="btn btn-secondary" id="downloadBtn">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                                ` : ''}
                                 <button class="btn btn-secondary" id="addListBtn">
                                     <i class="fas fa-plus"></i> Add to List
                                 </button>
@@ -1149,6 +1154,9 @@
                                     <i class="fas fa-play-circle"></i>
                                 </div>
                                 <span class="episode-number">${t('episode')} ${episode.episode_number}</span>
+                                <button class="episode-download-btn" onclick="downloadEpisode(event, ${showId}, ${seasonNum}, ${episode.episode_number}, '${episode.name.replace(/'/g, "\\'")}')" title="Download Episode">
+                                    <i class="fas fa-download"></i>
+                                </button>
                             </div>
                             <div class="episode-info">
                                 <h3 class="episode-title">${episode.name}</h3>
@@ -1205,6 +1213,14 @@
                 });
             }
             
+            // Download button handler
+            const downloadBtn = document.getElementById('downloadBtn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    downloadMovie(id, type);
+                });
+            }
+            
             // Function to load episodes for video player
             function loadEpisodesForVideo(mediaType, showId, seasonNum) {
                 const episodesList = document.getElementById('episodesList');
@@ -1249,6 +1265,9 @@
                                     <span style="background: #e50914; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;">${episode.episode_number}</span>
                                     <span style="flex: 1; color: #fff;">${episode.name}</span>
                                     <span style="color: #888; font-size: 12px;">${episode.runtime || ''}min</span>
+                                    <button class="video-episode-download" onclick="downloadEpisode(event, ${showId}, ${seasonNum}, ${episode.episode_number}, '${episode.name.replace(/'/g, "\\'")}')" style="background: #333; border: none; color: #fff; padding: 5px 10px; border-radius: 4px; cursor: pointer; margin-left: 5px;">
+                                        <i class="fas fa-download"></i>
+                                    </button>
                                 </div>
                             `).join('');
                             
@@ -1507,6 +1526,23 @@
                     window.location.href = `detail.html?id=${id}&type=${type}`;
                 });
             });
+        }
+        
+        // Download movie function
+        function downloadMovie(id, type) {
+            // Try superstream source
+            const embedUrl = `https://superstream.best/embed/${type}/${id}`;
+            window.location.href = embedUrl;
+        }
+        
+        // Download episode function
+        function downloadEpisode(event, showId, seasonNum, episodeNum, episodeName) {
+            event.stopPropagation();
+            event.preventDefault();
+            
+            // Try superstream source for episodes
+            const embedUrl = `https://superstream.best/embed/tv/${showId}?season=${seasonNum}&episode=${episodeNum}`;
+            window.location.href = embedUrl;
         }
     </script>
 </body>
