@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#e50914">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="CinematiX">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="Cinamatix.svg">
+    <title>CinamatiX - Watch Movies, TV Shows, Anime & More</title>
+    <link rel="icon" href="Cinamatix.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-play-circle"></i>
+                <span>CinamatiX</span>
+            </a>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-link active" data-category="all">Home</a>
+                <a href="#" class="nav-link" data-category="movie">Movies</a>
+                <a href="#" class="nav-link" data-category="tv">TV Shows</a>
+                <a href="#" class="nav-link" data-category="favorites">Favorites</a>
+            </nav>
+
+            <div class="header-actions">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search movies, TV shows, anime...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+                <button class="settings-btn" id="settingsBtn" title="Settings">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-nav">
+            <a href="#" class="mobile-nav-link active" data-category="all">Home</a>
+            <a href="#" class="mobile-nav-link" data-category="movie">Movies</a>
+            <a href="#" class="mobile-nav-link" data-category="tv">TV Shows</a>
+            <a href="#" class="mobile-nav-link" data-category="favorites">Favorites</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="heroSection">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title" id="heroTitle">Welcome to CinematiX</h1>
+            <p class="hero-description" id="heroDescription">Stream unlimited movies, TV shows, anime and more</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="playBtn">
+                    <i class="fas fa-play"></i> Play Now
+                </button>
+                <button class="btn btn-secondary" id="infoBtn">
+                    <i class="fas fa-info-circle"></i> More Info
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+        <div class="filters-container">
+            <div class="filter-group">
+                <label>Category:</label>
+                <select id="categoryFilter">
+                    <option value="all">All</option>
+                    <option value="movie">Movies</option>
+                    <option value="tv">TV Shows</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Genre:</label>
+                <select id="genreFilter">
+                    <option value="">All Genres</option>
+                    <option value="28">Action</option>
+                    <option value="12">Adventure</option>
+                    <option value="16">Animation</option>
+                    <option value="35">Comedy</option>
+                    <option value="80">Crime</option>
+                    <option value="99">Documentary</option>
+                    <option value="18">Drama</option>
+                    <option value="10751">Family</option>
+                    <option value="14">Fantasy</option>
+                    <option value="36">History</option>
+                    <option value="27">Horror</option>
+                    <option value="10402">Music</option>
+                    <option value="9648">Mystery</option>
+                    <option value="10749">Romance</option>
+                    <option value="878">Science Fiction</option>
+                    <option value="10770">TV Movie</option>
+                    <option value="53">Thriller</option>
+                    <option value="10752">War</option>
+                    <option value="37">Western</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <main class="main-content">
+        <!-- Trending Section -->
+        <section class="content-section" data-section="trending">
+            <div class="section-header">
+                <h2 class="section-title">Trending Now</h2>
+        </div>
+            <div class="content-row" id="trendingContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Popular Movies -->
+        <section class="content-section" data-section="popular-movies">
+            <div class="section-header">
+                <h2 class="section-title">Popular Movies</h2>
+            </div>
+            <div class="content-row" id="moviesContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Popular TV Shows -->
+        <section class="content-section" data-section="popular-tv">
+            <div class="section-header">
+                <h2 class="section-title">Popular TV Shows</h2>
+            </div>
+            <div class="content-row" id="tvshowsContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Top Rated Movies -->
+        <section class="content-section" data-section="toprated-movies">
+            <div class="section-header">
+                <h2 class="section-title">Top Rated Movies</h2>
+            </div>
+            <div class="content-row" id="topratedContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Top Rated TV Shows -->
+        <section class="content-section" data-section="toprated-tv">
+            <div class="section-header">
+                <h2 class="section-title">Top Rated TV Shows</h2>
+            </div>
+            <div class="content-row" id="topratedTvContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Upcoming Movies -->
+        <section class="content-section" data-section="upcoming-movies">
+            <div class="section-header">
+                <h2 class="section-title">Upcoming Movies</h2>
+            </div>
+            <div class="content-row" id="upcomingContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- On TV (Airing Today) -->
+        <section class="content-section" data-section="on-tv">
+            <div class="section-header">
+                <h2 class="section-title">On TV</h2>
+            </div>
+            <div class="content-row" id="ontvContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Upcoming TV Shows (On The Air) -->
+        <section class="content-section" data-section="upcoming-tv">
+            <div class="section-header">
+                <h2 class="section-title">Upcoming TV Shows</h2>
+            </div>
+            <div class="content-row" id="upcomingTvContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Now Playing -->
+        <section class="content-section" data-section="nowplaying-movies">
+            <div class="section-header">
+                <h2 class="section-title">Now Playing</h2>
+            </div>
+            <div class="content-row" id="nowplayingContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Favorites Section with Tabs -->
+        <section class="content-section" data-section="favorites">
+            <div class="favorites-tabs">
+                <button class="favorites-tab active" data-status="watching">Watching</button>
+                <button class="favorites-tab" data-status="planToWatch">Plan to Watch</button>
+                <button class="favorites-tab" data-status="finished">Finished</button>
+                <button class="favorites-tab" data-status="dropped">Dropped</button>
+            </div>
+            <div class="content-row" id="favoritesContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Movie Detail Modal -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Search Results Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-modal-content">
+            <div class="search-modal-header">
+                <h2>Search Results</h2>
+                <button class="search-modal-close" id="searchModalClose"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="search-modal-body" id="searchModalBody">
+                <!-- Search results will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Cinematix</h3>
+                <p>Your ultimate destination for streaming movies, TV shows, anime and more.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Cinematix.</p>
+        </div>
+    </footer>
+
+    <script src="config.js"></script>
+    <!-- Settings Modal -->
+    <div class="settings-modal" id="settingsModal">
+        <div class="settings-modal-content">
+            <div class="settings-header">
+                <h2 id="settingsTitle">Settings</h2>
+                <button class="settings-close" id="settingsClose"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="settings-body">
+                <div class="settings-section">
+                    <h3 id="languageLabel">Language</h3>
+                    <div class="language-options">
+                        <button class="language-btn active" data-lang="en">
+                            <span class="lang-flag">🇺🇸</span> English
+                        </button>
+                        <button class="language-btn" data-lang="es">
+                            <span class="lang-flag">🇪🇸</span> Español
+                        </button>
+                        <button class="language-btn" data-lang="fr">
+                            <span class="lang-flag">🇫🇷</span> Français
+                        </button>
+                        <button class="language-btn" data-lang="de">
+                            <span class="lang-flag">🇩🇪</span> Deutsch
+                        </button>
+                        <button class="language-btn" data-lang="it">
+                            <span class="lang-flag">🇮🇹</span> Italiano
+                        </button>
+                        <button class="language-btn" data-lang="pt">
+                            <span class="lang-flag">🇵🇹</span> Português
+                        </button>
+                        <button class="language-btn" data-lang="ar">
+                            <span class="lang-flag">🇸🇦</span> العربية
+                        </button>
+                        <button class="language-btn" data-lang="ja">
+                            <span class="lang-flag">🇯🇵</span> 日本語
+                        </button>
+                        <button class="language-btn" data-lang="ko">
+                            <span class="lang-flag">🇰🇷</span> 한국어
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js').catch((error) => {
+                    console.error('Service worker registration failed:', error);
+                });
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "id": "/",
+  "name": "CinematiX",
+  "short_name": "CinematiX",
+  "description": "Watch movies, TV shows, anime and more.",
+  "start_url": "/",
+  "scope": "/",
+  "display_override": ["standalone", "minimal-ui"],
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f0f0f",
+  "theme_color": "#e50914",
+  "icons": [
+    {
+      "src": "Cinamatix.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "Cinamatix.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
